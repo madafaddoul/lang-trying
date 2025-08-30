@@ -1,6 +1,6 @@
 <?php
 // Simple stats: sum, average, min, max, sorted
-$nums = [3, 7, 1, 9, 4];
+$nums = <div 4,5,6=""></div>;
 
 echo "Numbers: [" . implode(", ", $nums) . "]\n";
 
