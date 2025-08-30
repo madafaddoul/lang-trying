@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-my @nums = (5,6,7);
+my @nums = (5,6,7,8);
 print "Numbers: [", join(", ", @nums), "]\n";
 
 my ($sum, $min, $max) = (0, $nums[0], $nums[0]);
