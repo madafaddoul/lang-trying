@@ -20,7 +20,7 @@ function computeStats(array $nums): array {
 }
 
 function main(): void {
-    $nums = [3, 7, 1, 9, 4];
+    $nums = [10,12];
     $stats = computeStats($nums);
 
     echo "Numbers: [" . implode(", ", $nums) . "]\n";

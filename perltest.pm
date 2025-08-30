@@ -26,7 +26,7 @@ sub compute_stats {
 }
 
 sub main {
-    my @nums  = (3, 7, 1, 9, 4);
+    my @nums  = (5,6,8);
     my $stats = compute_stats(\@nums);
 
     print "Numbers: [", join(", ", @nums), "]\n";
