@@ -2,21 +2,39 @@
 use strict;
 use warnings;
 
-my @nums = (5,6,7,8);
-print "Numbers: [", join(", ", @nums), "]\n";
+sub compute_stats {
+    my ($nums) = @_;            # Expect an array reference
+    die "compute_stats expects an arrayref\n" unless ref($nums) eq 'ARRAY';
 
-my ($sum, $min, $max) = (0, $nums[0], $nums[0]);
-for my $n (@nums) {
-    $sum += $n;
-    $min = $n if $n < $min;
-    $max = $n if $n > $max;
+    my ($sum, $min, $max) = (0, $nums->[0], $nums->[0]);
+    for my $n (@$nums) {
+        $sum += $n;
+        $min = $n if $n < $min;
+        $max = $n if $n > $max;
+    }
+    my $avg = $sum / @$nums;
+
+    my @sorted = sort { $a <=> $b } @$nums;
+
+    return {
+        sum    => $sum,
+        avg    => $avg,
+        min    => $min,
+        max    => $max,
+        sorted => \@sorted,
+    };
 }
-my $avg = $sum / @nums;
 
-my @sorted = sort { $a <=> $b } @nums;
+sub main {
+    my @nums  = (3, 7, 1, 9, 4);
+    my $stats = compute_stats(\@nums);
 
-printf "Sum = %d\n", $sum;
-printf "Average = %.2f\n", $avg;
-print  "Min = $min\n";
-print  "Max = $max\n";
-print  "Sorted = [", join(", ", @sorted), "]\n";
+    print "Numbers: [", join(", ", @nums), "]\n";
+    print "Sum = $stats->{sum}\n";
+    printf "Average = %.2f\n", $stats->{avg};
+    print "Min = $stats->{min}\n";
+    print "Max = $stats->{max}\n";
+    print "Sorted = [", join(", ", @{ $stats->{sorted} }), "]\n";
+}
+
+main();

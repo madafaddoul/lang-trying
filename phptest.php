@@ -1,19 +1,34 @@
 <?php
-// Simple stats: sum, average, min, max, sorted
-$nums = <div 4,5,6=""></div>;
+declare(strict_types=1);
 
-echo "Numbers: [" . implode(", ", $nums) . "]\n";
+function computeStats(array $nums): array {
+    $sum = array_sum($nums);
+    $min = min($nums);
+    $max = max($nums);
+    $avg = $sum / count($nums);
 
-$sum = array_sum($nums);
-$min = min($nums);
-$max = max($nums);
-$avg = $sum / count($nums);
+    $sorted = $nums;
+    sort($sorted, SORT_NUMERIC);
 
-$sorted = $nums;
-sort($sorted, SORT_NUMERIC);
+    return [
+        'sum' => $sum,
+        'avg' => $avg,
+        'min' => $min,
+        'max' => $max,
+        'sorted' => $sorted
+    ];
+}
 
-echo "Sum = $sum\n";
-printf("Average = %.2f\n", $avg);
-echo "Min = $min\n";
-echo "Max = $max\n";
-echo "Sorted = [" . implode(", ", $sorted) . "]\n";
+function main(): void {
+    $nums = [3, 7, 1, 9, 4];
+    $stats = computeStats($nums);
+
+    echo "Numbers: [" . implode(", ", $nums) . "]\n";
+    echo "Sum = {$stats['sum']}\n";
+    printf("Average = %.2f\n", $stats['avg']);
+    echo "Min = {$stats['min']}\n";
+    echo "Max = {$stats['max']}\n";
+    echo "Sorted = [" . implode(", ", $stats['sorted']) . "]\n";
+}
+
+main();
