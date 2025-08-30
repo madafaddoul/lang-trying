@@ -4,7 +4,7 @@ declare(strict_types=1);
 function computeStats(array $nums): array {
     $sum = array_sum($nums);
     $min = min($nums);
-    $max = max($nums);
+    $maximum = max($nums);
     $avg = $sum / count($nums);
 
     $sorted = $nums;
@@ -14,7 +14,7 @@ function computeStats(array $nums): array {
         'sum' => $sum,
         'avg' => $avg,
         'min' => $min,
-        'max' => $max,
+        'max' => $maximum,
         'sorted' => $sorted
     ];
 }

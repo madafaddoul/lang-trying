@@ -6,11 +6,11 @@ sub compute_stats {
     my ($nums) = @_;            # Expect an array reference
     die "compute_stats expects an arrayref\n" unless ref($nums) eq 'ARRAY';
 
-    my ($sum, $min, $max) = (0, $nums->[0], $nums->[0]);
+    my ($sum, $min, $maximum) = (0, $nums->[0], $nums->[0]);
     for my $n (@$nums) {
         $sum += $n;
         $min = $n if $n < $min;
-        $max = $n if $n > $max;
+        $maximum = $n if $n > $maximum;
     }
     my $avg = $sum / @$nums;
 
@@ -20,7 +20,7 @@ sub compute_stats {
         sum    => $sum,
         avg    => $avg,
         min    => $min,
-        max    => $max,
+        max    => $maximum,
         sorted => \@sorted,
     };
 }
