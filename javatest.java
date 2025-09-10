@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class SimpleStats {
     public static void main(String[] args) {
-        int[] nums = {1,2,5};
+        int[] nums = {1,2,3};
 
         System.out.println("Numbers: " + Arrays.toString(nums));
 
